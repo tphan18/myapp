@@ -1,16 +1,40 @@
-from sqlalchemy import Column, Integer, String
+import uuid
+from datetime import datetime
+
+from sqlalchemy import (
+    Column,
+    String,
+    DateTime,
+    ForeignKey,
+    Integer,
+    Numeric,
+)
+from sqlalchemy.orm import relationship
 from eastridge.db import Base
 
 
-class User(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50), unique=True)
-    email = Column(String(120), unique=True)
+def generate_uuid():
+    return str(uuid.uuid4())
 
-    def __init__(self, name=None, email=None):
-        self.name = name
-        self.email = email
+
+class Invoice(Base):
+    __tablename__ = "invoice"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    invoice_date = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
-        return f"<User {self.name!r}>"
+        return f"<Invoice(id='{self.id}', invoice_date='{self.invoice_date}')>"
+
+
+class InvoiceItem(Base):
+    __tablename__ = "invoice_item"
+    id = Column(String, primary_key=True, default=generate_uuid)
+    units = Column(Integer, nullable=False)
+    description = Column(String, nullable=False)
+    amount = Column(Numeric, nullable=False)
+
+    invoice_id = Column(String, ForeignKey("invoice.id"), nullable=False)
+    invoice = relationship("Invoice", backref="invoice_items", lazy=True)
+
+    def __repr__(self):
+        return f"<InvoiceItem(id='{self.id}', units='{self.units}', description='{self.description}', amount='{self.amount}')>"
