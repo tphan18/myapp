@@ -1,3 +1,5 @@
+"""Payload schemas for the Eastridge API. """
+
 INVOICE_ITEMS_SCHEMA = {
     "type": "array",
     "minItems": 1,

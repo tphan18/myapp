@@ -1,3 +1,5 @@
+"""App models. """
+
 import uuid
 from datetime import datetime
 

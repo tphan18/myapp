@@ -1,3 +1,5 @@
+"""Utils module. """
+
 from flask import request
 from jsonschema import validate, ValidationError
 from werkzeug.exceptions import BadRequest

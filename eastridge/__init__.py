@@ -1,3 +1,5 @@
+"""App module. """
+
 import os
 
 import werkzeug
