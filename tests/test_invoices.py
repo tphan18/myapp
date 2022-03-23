@@ -1,3 +1,5 @@
+"""Test invoices endpoints."""
+
 import pytest
 
 test_400_data = [

@@ -1,4 +1,4 @@
-"""Invoices module. """
+"""Invoices module."""
 
 from flask import Blueprint
 
@@ -19,7 +19,6 @@ def save_invoice(invoice, invoice_items):
 
     Returns: None
     """
-
     for item in invoice_items:
         invoice_item = InvoiceItem(**item)
         invoice.invoice_items.append(invoice_item)
@@ -33,7 +32,6 @@ def save_invoice(invoice, invoice_items):
 @bp.route("", methods=["GET"])
 def list_invoices():
     """List all invoices."""
-
     return {
         "invoices": [
             {"id": invoice.id, "invoice_date": invoice.invoice_date}
@@ -45,7 +43,6 @@ def list_invoices():
 @bp.route("", methods=["POST"])
 def create_invoice():
     """Create an invoice."""
-
     payloads = get_payloads(INVOICE_ITEMS_SCHEMA)
     invoice = Invoice()
     save_invoice(invoice, payloads)
@@ -67,7 +64,6 @@ def get_invoice(invoice_id):
 @bp.route("/<invoice_id>", methods=["POST"])
 def update_invoice(invoice_id):
     """Update an invoice."""
-
     payloads = get_payloads(INVOICE_ITEMS_SCHEMA)
     invoice = Invoice.query.get(invoice_id)
 

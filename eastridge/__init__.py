@@ -1,4 +1,4 @@
-"""App module. """
+"""App module."""
 
 import os
 
@@ -7,7 +7,7 @@ from flask import Flask
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    """Create and configure the app."""
     app = Flask(__name__, instance_relative_config=True)
 
     if test_config is None:

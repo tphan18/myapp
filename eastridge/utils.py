@@ -1,4 +1,4 @@
-"""Utils module. """
+"""Utils module."""
 
 from flask import request
 from jsonschema import validate, ValidationError

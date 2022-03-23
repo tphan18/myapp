@@ -1,4 +1,4 @@
-"""App models. """
+"""App models."""
 
 import uuid
 from datetime import datetime
@@ -9,15 +9,19 @@ from eastridge.db import Base
 
 
 def generate_uuid():
+    """Generate a UUID."""
     return str(uuid.uuid4())
 
 
 class Invoice(Base):
+    """Invoice model."""
+
     __tablename__ = "invoice"
-    id = Column(String, primary_key=True, default=generate_uuid)
+    id = Column(String, primary_key=True, default=generate_uuid)  # noqa
     invoice_date = Column(DateTime, nullable=False, default=datetime.utcnow)
 
     def get_invoice_items(self):
+        """Return invoice items."""
         return [
             {
                 "id": invoice_item.id,
@@ -29,6 +33,7 @@ class Invoice(Base):
         ]
 
     def as_dict(self):
+        """Return invoice as a dictionary."""
         return {
             "id": self.id,
             "invoice_date": self.invoice_date,
@@ -36,12 +41,15 @@ class Invoice(Base):
         }
 
     def __repr__(self):
+        """Return a string representation of the model."""
         return f"<Invoice(id='{self.id}', invoice_date='{self.invoice_date}')>"
 
 
 class InvoiceItem(Base):
+    """Invoice item model."""
+
     __tablename__ = "invoice_item"
-    id = Column(String, primary_key=True, default=generate_uuid)
+    id = Column(String, primary_key=True, default=generate_uuid)  # noqa
     units = Column(Integer, nullable=False)
     description = Column(String, nullable=False)
     amount = Column(String, nullable=False, default=str)
@@ -50,4 +58,5 @@ class InvoiceItem(Base):
     invoice = relationship("Invoice", backref="invoice_items", lazy=True)
 
     def __repr__(self):
-        return f"<InvoiceItem(id='{self.id}', units='{self.units}', description='{self.description}', amount='{self.amount}')>"
+        """Return a string representation of the model."""
+        return f"<InvoiceItem(id='{self.id}', description='{self.description}')>"
