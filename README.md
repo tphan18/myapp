@@ -200,5 +200,8 @@ curl --request GET 'http://localhost:5000/v1/invoices/45e4bfa2-79ac-4778-af9c-ca
 
 # Notes:
 
-- I did not implement pagination for list all invoices endpoint
+- No pagination
 - Using string for `amount` column in `InvoiceItem` model for lessless storage since sqlite+pysqlite does not support Decimal objects natively.
+- No authentication and authorization
+- No loggings
+- No TLS/SSL
