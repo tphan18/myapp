@@ -34,7 +34,12 @@ def save_invoice(invoice, invoice_items):
 def list_invoices():
     """List all invoices."""
 
-    return {"invoices": [invoice.as_dict() for invoice in Invoice.query.all()]}
+    return {
+        "invoices": [
+            {"id": invoice.id, "invoice_date": invoice.invoice_date}
+            for invoice in Invoice.query.all()
+        ]
+    }
 
 
 @bp.route("", methods=["POST"])

@@ -1,13 +1,11 @@
 """Database module. """
 
-import os
-
+from flask import current_app
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-engine = create_engine("sqlite:///" + os.path.join(basedir, "../db", "app.db"))
+engine = create_engine(current_app.config["DATABASE_URI"])
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine)
 )
