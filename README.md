@@ -1,3 +1,10 @@
+# Run
+
+```bash
+docker build -t eastridge .
+docker run --rm -p 5000:5000 eastridge
+```
+
 # Endpoints
 
 ```text
