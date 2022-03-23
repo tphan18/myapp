@@ -1,14 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import (
-    Column,
-    String,
-    DateTime,
-    ForeignKey,
-    Integer,
-    Numeric,
-)
+from sqlalchemy import Column, String, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from eastridge.db import Base
 
@@ -28,7 +21,7 @@ class Invoice(Base):
                 "id": invoice_item.id,
                 "units": invoice_item.units,
                 "description": invoice_item.description,
-                "amount": invoice_item.amount,
+                "amount": float(invoice_item.amount),
             }
             for invoice_item in self.invoice_items
         ]
@@ -49,7 +42,7 @@ class InvoiceItem(Base):
     id = Column(String, primary_key=True, default=generate_uuid)
     units = Column(Integer, nullable=False)
     description = Column(String, nullable=False)
-    amount = Column(Numeric, nullable=False)
+    amount = Column(String, nullable=False, default=str)
 
     invoice_id = Column(String, ForeignKey("invoice.id"), nullable=False)
     invoice = relationship("Invoice", backref="invoice_items", lazy=True)
