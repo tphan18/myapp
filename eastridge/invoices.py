@@ -56,13 +56,10 @@ def create_invoice():
 @bp.route("/<invoice_id>", methods=["GET"])
 def get_invoice(invoice_id):
     """Get an invoice."""
-    if not invoice_id:
-        return {"error": "Invoice ID is required."}, 400
-
     invoice = Invoice.query.get(invoice_id)
 
     if not invoice:
-        return {"error": "Invoice not found"}, 404
+        return {"error": "Not found"}, 404
 
     return invoice.as_dict()
 
@@ -75,7 +72,7 @@ def update_invoice(invoice_id):
     invoice = Invoice.query.get(invoice_id)
 
     if not invoice:
-        return {"error": "Invoice not found"}, 404
+        return {"error": "Not found"}, 404
 
     save_invoice(invoice, payloads)
 
