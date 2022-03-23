@@ -51,6 +51,8 @@ def create_invoice():
 @bp.route("/<invoice_id>", methods=["GET"])
 def get_invoice(invoice_id):
     """Get an invoice."""
+    if not invoice_id:
+        return {"error": "Invoice ID is required."}, 400
 
     invoice = Invoice.query.get(invoice_id)
 
