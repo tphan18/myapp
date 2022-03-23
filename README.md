@@ -7,7 +7,7 @@
      GET    /v1/invoices/:id      Get invoice with the given ID
 ```
 
-# POST /v1/invoices
+### POST /v1/invoices
 
 **Required keys**
 
@@ -57,7 +57,7 @@ curl --request POST 'http://localhost:5000/v1/invoices' \
 }
 ```
 
-# GET /v1/invoices
+### GET /v1/invoices
 
 **Example**
 
@@ -82,7 +82,7 @@ curl --request GET 'http://localhost:5000/v1/invoices'
 }
 ```
 
-# POST /v1/invoices/:id
+### POST /v1/invoices/:id
 
 **Required keys**
 
@@ -132,7 +132,7 @@ curl --request POST 'http://localhost:5000/v1/invoices/256aae12-5c7f-4e2e-bfff-4
 }
 ```
 
-# GET /v1/invoices/:id
+### GET /v1/invoices/:id
 
 **Example**
 
