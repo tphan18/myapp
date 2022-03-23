@@ -205,3 +205,4 @@ curl --request GET 'http://localhost:5000/v1/invoices/45e4bfa2-79ac-4778-af9c-ca
 - No authentication and authorization.
 - No loggings.
 - No TLS/SSL.
+- No CI/CD pipeline but I have run `black`, `flake8` locally.
