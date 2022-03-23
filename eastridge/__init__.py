@@ -1,5 +1,6 @@
 import os
 
+import werkzeug
 from flask import Flask
 
 
@@ -16,10 +17,14 @@ def create_app(test_config=None):
     def shutdown_session(exception=None):
         db_session.remove()
 
-    # a simple page that says hello
-    @app.route("/hello")
-    def hello():
-        return "Hello, World!"
+    @app.errorhandler(werkzeug.exceptions.BadRequest)
+    def handle_bad_request(e):
+        return {"error": [e.description]}, e.code
 
     init_db()
+
+    from . import invoices
+
+    app.register_blueprint(invoices.bp)
+
     return app

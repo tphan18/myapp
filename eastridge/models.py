@@ -22,6 +22,24 @@ class Invoice(Base):
     id = Column(String, primary_key=True, default=generate_uuid)
     invoice_date = Column(DateTime, nullable=False, default=datetime.utcnow)
 
+    def get_invoice_items(self):
+        return [
+            {
+                "id": invoice_item.id,
+                "units": invoice_item.units,
+                "description": invoice_item.description,
+                "amount": invoice_item.amount,
+            }
+            for invoice_item in self.invoice_items
+        ]
+
+    def as_dict(self):
+        return {
+            "id": self.id,
+            "invoice_date": self.invoice_date,
+            "invoice_items": self.get_invoice_items(),
+        }
+
     def __repr__(self):
         return f"<Invoice(id='{self.id}', invoice_date='{self.invoice_date}')>"
 
