@@ -1,4 +1,4 @@
-"""Payload schemas for the Eastridge API."""
+"""Payload schemas for the myapp API."""
 
 INVOICE_ITEMS_SCHEMA = {
     "type": "array",

@@ -19,7 +19,7 @@ def create_app(test_config=None):
         app.config.from_mapping(test_config)
 
     with app.app_context():
-        from eastridge.db import db_session, init_db
+        from myapp.db import db_session, init_db
 
         init_db()
 

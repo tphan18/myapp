@@ -4,7 +4,7 @@ import os
 import tempfile
 
 import pytest
-from eastridge import create_app
+from myapp import create_app
 
 
 @pytest.fixture

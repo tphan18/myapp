@@ -2,10 +2,10 @@
 
 from flask import Blueprint
 
-from eastridge.db import db_session
-from eastridge.models import Invoice, InvoiceItem
-from eastridge.payload_schemas import INVOICE_ITEMS_SCHEMA
-from eastridge.utils import get_payloads
+from myapp.db import db_session
+from myapp.models import Invoice, InvoiceItem
+from myapp.payload_schemas import INVOICE_ITEMS_SCHEMA
+from myapp.utils import get_payloads
 
 bp = Blueprint("invoices", __name__, url_prefix="/v1/invoices")
 

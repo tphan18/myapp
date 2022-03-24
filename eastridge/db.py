@@ -15,6 +15,6 @@ Base.query = db_session.query_property()
 
 def init_db():
     """Initialize database."""
-    import eastridge.models  # noqa
+    import myapp.models  # noqa
 
     Base.metadata.create_all(bind=engine)

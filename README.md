@@ -1,19 +1,19 @@
 # Build
 
 ```bash
-docker build -t eastridge .
+docker build -t myapp .
 ```
 
 # Run
 
 ```bash
-docker run --rm -p 5000:5000 eastridge
+docker run --rm -p 5000:5000 myapp
 ```
 
 # Test
 
 ```bash
-docker run --rm eastridge pytest -vv
+docker run --rm myapp pytest -vv
 ```
 
 # Coverage
@@ -23,12 +23,12 @@ I have generated the coverage report while testing locally. Here is the result:
 ```text
 Name                           Stmts   Miss Branch BrPart  Cover   Missing
 --------------------------------------------------------------------------
-eastridge/__init__.py             24      3      2      1    85%   14-15, 36
-eastridge/db.py                   11      0      0      0   100%
-eastridge/invoices.py             36      0      8      0   100%
-eastridge/models.py               27      2      6      0    94%   45, 62
-eastridge/payload_schemas.py       1      0      0      0   100%
-eastridge/utils.py                18      0      2      0   100%
+myapp/__init__.py             24      3      2      1    85%   14-15, 36
+myapp/db.py                   11      0      0      0   100%
+myapp/invoices.py             36      0      8      0   100%
+myapp/models.py               27      2      6      0    94%   45, 62
+myapp/payload_schemas.py       1      0      0      0   100%
+myapp/utils.py                18      0      2      0   100%
 --------------------------------------------------------------------------
 TOTAL                            117      5     18      1    96%
 ```

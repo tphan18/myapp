@@ -10,7 +10,7 @@ DEPENDENCIES = [
 ]
 
 setup(
-    name="eastridge",
+    name="myapp",
     packages=find_packages(),
     include_package_data=False,
     install_requires=DEPENDENCIES,

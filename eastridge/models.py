@@ -5,7 +5,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import relationship
-from eastridge.db import Base
+from myapp.db import Base
 
 
 def generate_uuid():
